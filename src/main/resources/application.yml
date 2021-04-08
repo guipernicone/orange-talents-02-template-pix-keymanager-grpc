@@ -1,0 +1,17 @@
+micronaut:
+  application:
+    name: keyManageGRPC
+
+grpc:
+  server:
+    port: ${SERVER_PORT:50051}
+    keep-alive-time: 1h
+    max-inbound-message-size: 1024
+
+itau:
+  contas:
+    url: ${ITAU_CONTA_URL:`http://localhost:9091`}
+
+bcb:
+  pix:
+    url: ${BCB_PIX_URL:`http://localhost:8082`}
