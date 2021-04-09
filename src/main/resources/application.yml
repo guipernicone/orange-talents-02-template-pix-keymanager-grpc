@@ -2,6 +2,14 @@ micronaut:
   application:
     name: keyManageGRPC
 
+datasources:
+  default:
+    url: ${MYSQL_URL:`jdbc:mysql://localhost:3306/KeyManagerGRPC`}?serverTimezone=GMT-3&createDatabaseIfNotExist=true
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:root}
+jpa.default.properties.hibernate.hbm2ddl.auto: update
+
 grpc:
   server:
     port: ${SERVER_PORT:50051}
