@@ -16,7 +16,7 @@ package com.zup.br.orange.validation
 //annotation class UniqueValue(
 //    val groups: Array<KClass<Any>> = [],
 //    val payload: Array<KClass<Payload>> = [],
-//    val massega: String = "Field must be unique",
+//    val massege: String = "Field must be unique",
 //    val field: String,
 //    val domainClass: KClass<Any>
 //)

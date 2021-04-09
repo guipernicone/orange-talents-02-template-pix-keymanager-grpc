@@ -37,6 +37,7 @@ dependencies {
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:mysql")
     testImplementation("org.testcontainers:testcontainers")
+    implementation("org.hibernate:hibernate-validator:6.1.6.Final")
     implementation("io.micronaut:micronaut-validation")
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")

@@ -2,12 +2,14 @@ package com.zup.br.orange.grpc.pix
 
 import com.zup.br.orange.*
 import com.zup.br.orange.entity.pix.request.RegisterPixKeyRequest
+import com.zup.br.orange.exceptions.handler.ErrorHandler
 import com.zup.br.orange.grpc.pix.service.RegisterKeyGrpcService
 import com.zup.br.orange.grpc.pix.utils.toModel
 import io.grpc.stub.StreamObserver
 import org.slf4j.LoggerFactory
 import javax.inject.Singleton
 
+@ErrorHandler
 @Singleton
 class PixKeyGrpcServer(val registerKeyGrpcService: RegisterKeyGrpcService) : PixKeyServiceGrpc.PixKeyServiceImplBase() {
 

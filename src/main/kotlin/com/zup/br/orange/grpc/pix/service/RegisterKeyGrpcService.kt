@@ -1,7 +1,7 @@
 package com.zup.br.orange.grpc.pix.service
 
 import com.zup.br.orange.entity.pix.request.RegisterPixKeyRequest
-import com.zup.br.orange.exceptions.DuplicatePixKey
+import com.zup.br.orange.exceptions.DuplicatePixKeyException
 import com.zup.br.orange.repository.PixRepository
 import io.micronaut.validation.Validated
 import javax.inject.Singleton
@@ -17,7 +17,7 @@ class RegisterKeyGrpcService(var pixRepository: PixRepository) {
         println("Chave Valida")
 
         if (pixRepository.existsByPixValue(registerPixKeyRequest.keyValue))
-            throw DuplicatePixKey("Pix key - ${registerPixKeyRequest.keyValue} is already register")
+            throw DuplicatePixKeyException("Pix key - ${registerPixKeyRequest.keyValue} is already register")
 
         println("Chave Unica")
     }
