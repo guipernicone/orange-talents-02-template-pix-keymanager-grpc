@@ -16,7 +16,7 @@ enum class PixType {
         override fun valid(key: String?): Boolean {
             if (key.isNullOrBlank())
                 return false
-            println(key.matches("^\\+[1-9][0-9]\\d{1,14}\$".toRegex()))
+
             return key.matches("^\\+[1-9][0-9]\\d{1,14}\$".toRegex())
         }
     },
