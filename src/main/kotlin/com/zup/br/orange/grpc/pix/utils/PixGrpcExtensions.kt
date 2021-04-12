@@ -5,6 +5,7 @@ import com.zup.br.orange.KeyType
 import com.zup.br.orange.RegisterPixKeyGrpcRequest
 import com.zup.br.orange.entity.pix.enum.PixType
 import com.zup.br.orange.entity.pix.request.RegisterPixKeyRequest
+import java.util.*
 
 fun RegisterPixKeyGrpcRequest.toModel() : RegisterPixKeyRequest {
     return RegisterPixKeyRequest(

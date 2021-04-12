@@ -26,6 +26,7 @@ micronaut {
 
 dependencies {
     kapt("io.micronaut.data:micronaut-data-processor")
+    implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut:micronaut-runtime")
     implementation("io.micronaut.data:micronaut-data-hibernate-jpa")
     implementation("io.micronaut.grpc:micronaut-grpc-runtime")
@@ -34,6 +35,7 @@ dependencies {
     implementation("javax.annotation:javax.annotation-api")
     implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
+    implementation("io.micronaut.xml:micronaut-jackson-xml")
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:mysql")
     testImplementation("org.testcontainers:testcontainers")
@@ -42,6 +44,7 @@ dependencies {
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
     runtimeOnly("mysql:mysql-connector-java")
+    runtimeOnly("com.h2database:h2")
     testImplementation("io.micronaut:micronaut-http-client")
 
 }
