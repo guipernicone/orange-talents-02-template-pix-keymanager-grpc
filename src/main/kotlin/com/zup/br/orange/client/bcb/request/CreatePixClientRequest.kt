@@ -7,7 +7,7 @@ class CreatePixClientRequest (
     registerPixKeyRequest: RegisterPixKeyRequest,
     consultAccountResponse: ConsultAccountResponse
 ){
-    val keyType = registerPixKeyRequest.keyType!!.name
+    val keyType = registerPixKeyRequest.keyType?.name
     val key = registerPixKeyRequest.keyValue
     val bankAccount = CreatePixBankAccountRequest(
         consultAccountResponse.instituicao.ispb,

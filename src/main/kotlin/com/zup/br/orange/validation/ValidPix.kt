@@ -26,12 +26,12 @@ annotation class ValidPix(
 )
 
 @Singleton
-class ValidPixValidator(val entityManager: EntityManager) : ConstraintValidator<ValidPix, RegisterPixKeyRequest> {
+class ValidPixValidator() : ConstraintValidator<ValidPix, RegisterPixKeyRequest> {
 
     override fun isValid(
         @Nullable value: RegisterPixKeyRequest?,
-        @NonNull annotationMetadata: AnnotationValue<ValidPix>,
-        @NonNull context: ConstraintValidatorContext
+        @NonNull annotationMetadata: AnnotationValue<ValidPix>?,
+        @NonNull context: ConstraintValidatorContext?
     ): Boolean {
 
         if(value?.keyType == null)

@@ -13,17 +13,17 @@ import javax.inject.Singleton
 
 @ErrorHandler
 @Singleton
-class PixKeyGrpcServer(val registerKeyGrpcService: RegisterKeyGrpcService) : PixKeyServiceGrpc.PixKeyServiceImplBase() {
+    class PixKeyRegisterGrpcServer(val registerKeyGrpcService: RegisterKeyGrpcService) : PixKeyRegisterServiceGrpc.PixKeyRegisterServiceImplBase() {
 
-    private val logger = LoggerFactory.getLogger(PixKeyGrpcServer::class.java)
+    private val logger = LoggerFactory.getLogger(PixKeyRegisterGrpcServer::class.java)
 
-    override fun register(request: RegisterPixKeyGrpcRequest, responseObserver: StreamObserver<RegisterPixKeyGrpcResponse>) {
+    override fun register(request: PixKeyRegisterGrpcRequest, responseObserver: StreamObserver<PixKeyRegisterGrpcResponse>) {
 
         logger.info("Received request :\n$request");
 
         val pix = registerKeyGrpcService.registerNewPixKey(request.toModel())
 
-        val response = RegisterPixKeyGrpcResponse.newBuilder()
+        val response = PixKeyRegisterGrpcResponse.newBuilder()
             .setClientId(pix.clientId)
             .setPixId(pix.id.toString())
             .build()

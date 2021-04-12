@@ -22,6 +22,9 @@ enum class PixType {
     },
     EMAIL {
         override fun valid(key: String?): Boolean {
+            if (key.isNullOrBlank()){
+                return false
+            }
             return EmailValidator().run {
                 initialize(null)
                 isValid(key,null )

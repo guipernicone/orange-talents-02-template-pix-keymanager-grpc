@@ -7,8 +7,8 @@ option objc_class_prefix = "HLW";
 
 package com.zup.br.orange;
 
-service PixKeyService {
-  rpc register(RegisterPixKeyGrpcRequest) returns (RegisterPixKeyGrpcResponse) {}
+service PixKeyRegisterService {
+  rpc register(PixKeyRegisterGrpcRequest) returns (PixKeyRegisterGrpcResponse) {}
 }
 
 enum KeyType {
@@ -25,14 +25,14 @@ enum AccountType {
   CONTA_POUPANCA = 2;
 }
 
-message RegisterPixKeyGrpcRequest {
+message PixKeyRegisterGrpcRequest {
   string clientId = 1;
   KeyType keyType = 2;
   string keyValue = 3;
   AccountType account = 4;
 }
 
-message RegisterPixKeyGrpcResponse {
+message PixKeyRegisterGrpcResponse {
   string clientId = 1;
   string pixId = 5;
 }

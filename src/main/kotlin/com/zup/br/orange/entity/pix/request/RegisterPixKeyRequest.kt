@@ -15,7 +15,7 @@ import javax.validation.constraints.Size
 data class RegisterPixKeyRequest(
     @field: NotBlank val clientId: String,
     @field: NotNull val keyType: PixType?,
-    @field: Size(max = 77) var keyValue: String?,
+    @field: Size(max = 77) val keyValue: String?,
     @field: NotNull val accountType: AccountType?
 ) {
     fun toModel(createAt: LocalDateTime, key: String) : Pix{
