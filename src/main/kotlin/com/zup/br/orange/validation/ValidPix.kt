@@ -1,16 +1,12 @@
 package com.zup.br.orange.validation
 
-import com.zup.br.orange.KeyType
-import com.zup.br.orange.entity.pix.Pix
 import com.zup.br.orange.entity.pix.request.RegisterPixKeyRequest
-import io.micronaut.core.annotation.AnnotationMetadata
 import io.micronaut.core.annotation.AnnotationValue
 import io.micronaut.core.annotation.NonNull
 import io.micronaut.core.annotation.Nullable
 import io.micronaut.validation.validator.constraints.ConstraintValidator
 import io.micronaut.validation.validator.constraints.ConstraintValidatorContext
 import javax.inject.Singleton
-import javax.persistence.EntityManager
 import javax.validation.Constraint
 import javax.validation.Payload
 import kotlin.reflect.KClass
