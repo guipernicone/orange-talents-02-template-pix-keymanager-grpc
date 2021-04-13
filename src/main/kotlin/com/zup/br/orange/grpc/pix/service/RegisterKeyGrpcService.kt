@@ -28,6 +28,8 @@ class RegisterKeyGrpcService(
 
     @Transactional
     fun registerNewPixKey(@Valid registerPixKeyRequest: RegisterPixKeyRequest) : Pix {
+        println(registerPixKeyRequest.keyValue)
+        println(pixRepository.findAll())
         if (pixRepository.existsByPixValue(registerPixKeyRequest.keyValue))
             throw DuplicatePixKeyException("Pix key - ${registerPixKeyRequest.keyValue} is already register")
 
