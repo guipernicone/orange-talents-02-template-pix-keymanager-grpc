@@ -3,8 +3,8 @@ package com.zup.br.orange.grpc.pix.delete.service
 import com.zup.br.orange.PixKeyDeleteGrpcResponse
 import com.zup.br.orange.client.bcb.BCBClient
 import com.zup.br.orange.client.bcb.request.DeletePixClientRequest
-import com.zup.br.orange.client.itau.ItauClient
 import com.zup.br.orange.entity.pix.request.DeletePixKeyRequest
+import com.zup.br.orange.exceptions.InternalErrorException
 import com.zup.br.orange.exceptions.NotFoundException
 import com.zup.br.orange.repository.PixRepository
 import io.micronaut.validation.Validated
@@ -29,7 +29,7 @@ class PixKeyDeleteGrpcService (
         val pix = pixOptional.get()
 
         val bcbResponse = bcbClient.deletePix(pix.pixValue, DeletePixClientRequest(pix.pixValue, pix.ispb))
-            ?: throw InternalError("An unexpected error occurred while trying to delete key ${pix.id}")
+            ?: throw InternalErrorException("An unexpected error occurred while trying to delete key ${pix.id}")
 
         pixRepository.delete(pix)
 

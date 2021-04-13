@@ -1,4 +1,4 @@
-package com.zup.br.orange.grpc
+package com.zup.br.orange.grpc.register
 
 import com.zup.br.orange.AccountType
 import com.zup.br.orange.KeyType
@@ -93,7 +93,7 @@ class PixKeyGrpcServerTest(
 
     @Test
     fun testRegisterPixDuplicatePix(){
-        pixRepository.save(grpcRequest.toModel().toModel(LocalDateTime.now(),grpcRequest.keyValue))
+        pixRepository.save(grpcRequest.toModel().toModel(LocalDateTime.now(),grpcRequest.keyValue, "60701190"))
 
         val exception = Assert.assertThrows(io.grpc.StatusRuntimeException::class.java) {
             grpcClients.register(grpcRequest)

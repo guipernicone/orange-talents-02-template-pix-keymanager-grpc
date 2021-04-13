@@ -9,7 +9,7 @@ import java.util.*
 @Repository
 interface PixRepository: CrudRepository<Pix,Long > {
 
-    fun findByIdAndClientId(id:Long, clientId: String) : Optional<Pix>
+    fun findByIdAndClientId(id: Long?, clientId: String) : Optional<Pix>
 
     fun existsByPixValue(pixValue: String?) : Boolean
 }
