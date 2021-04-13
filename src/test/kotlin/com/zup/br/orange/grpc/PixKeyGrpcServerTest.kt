@@ -10,9 +10,8 @@ import com.zup.br.orange.client.itau.ItauClient
 import com.zup.br.orange.client.itau.response.ConsultAccountInstituicaoResponse
 import com.zup.br.orange.client.itau.response.ConsultAccountResponse
 import com.zup.br.orange.client.itau.response.ConsultAccountTitularResponse
-import com.zup.br.orange.entity.pix.Pix
 import com.zup.br.orange.entity.pix.enum.PixType
-import com.zup.br.orange.grpc.pix.utils.toModel
+import com.zup.br.orange.grpc.pix.register.utils.toModel
 import com.zup.br.orange.repository.PixRepository
 import io.micronaut.test.annotation.MockBean
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
@@ -24,8 +23,6 @@ import org.mockito.Mockito
 import utils.MockitoHelper
 import java.time.LocalDateTime
 import javax.inject.Inject
-import javax.persistence.EntityManager
-import javax.transaction.Transactional
 
 @MicronautTest(transactional = false)
 class PixKeyGrpcServerTest(

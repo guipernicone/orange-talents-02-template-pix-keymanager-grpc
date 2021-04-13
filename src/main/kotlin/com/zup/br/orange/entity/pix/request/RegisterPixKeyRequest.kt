@@ -18,7 +18,7 @@ data class RegisterPixKeyRequest(
     @field: Size(max = 77) val keyValue: String?,
     @field: NotNull val accountType: AccountType?
 ) {
-    fun toModel(createAt: LocalDateTime, key: String) : Pix{
-        return Pix(this.clientId, this.accountType!!, this.keyType!!, key, createAt)
+    fun toModel(createAt: LocalDateTime, key: String, ispb: String) : Pix{
+        return Pix(this.clientId, this.accountType!!, this.keyType!!, key, ispb, createAt)
     }
 }

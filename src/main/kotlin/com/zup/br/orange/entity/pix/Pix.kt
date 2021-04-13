@@ -13,6 +13,7 @@ class Pix(
     @Enumerated(EnumType.STRING) val accountType: AccountType,
     @Enumerated(EnumType.STRING) val pixType: PixType,
     val pixValue: String,
+    val ispb: String,
     val createAt: LocalDateTime
 ) {
     @Id

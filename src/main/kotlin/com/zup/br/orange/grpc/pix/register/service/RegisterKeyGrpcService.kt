@@ -1,4 +1,4 @@
-package com.zup.br.orange.grpc.pix.service
+package com.zup.br.orange.grpc.pix.register.service
 
 import com.zup.br.orange.client.bcb.BCBClient
 import com.zup.br.orange.client.bcb.request.AccountTypeBCBClientRequest
@@ -28,8 +28,6 @@ class RegisterKeyGrpcService(
 
     @Transactional
     fun registerNewPixKey(@Valid registerPixKeyRequest: RegisterPixKeyRequest) : Pix {
-        println(registerPixKeyRequest.keyValue)
-        println(pixRepository.findAll())
         if (pixRepository.existsByPixValue(registerPixKeyRequest.keyValue))
             throw DuplicatePixKeyException("Pix key - ${registerPixKeyRequest.keyValue} is already register")
 
@@ -41,7 +39,11 @@ class RegisterKeyGrpcService(
         val bcbResponse = bcbClient.createPix(CreatePixClientRequest(registerPixKeyRequest, accountResponse))
             ?: throw InternalErrorException("Error while trying to create pix key")
 
-        return pixRepository.save(registerPixKeyRequest.toModel(bcbResponse.createdAt, bcbResponse.key));
+        return pixRepository.save(registerPixKeyRequest.toModel(
+            bcbResponse.createdAt,
+            bcbResponse.key,
+            accountResponse.instituicao.ispb
+        ));
     }
 
 }

@@ -1,11 +1,10 @@
-package com.zup.br.orange.grpc.pix.utils
+package com.zup.br.orange.grpc.pix.register.utils
 
 import com.zup.br.orange.AccountType
 import com.zup.br.orange.KeyType
 import com.zup.br.orange.PixKeyRegisterGrpcRequest
 import com.zup.br.orange.entity.pix.enum.PixType
 import com.zup.br.orange.entity.pix.request.RegisterPixKeyRequest
-import java.util.*
 
 fun PixKeyRegisterGrpcRequest.toModel() : RegisterPixKeyRequest {
     return RegisterPixKeyRequest(

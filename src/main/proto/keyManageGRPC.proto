@@ -34,5 +34,21 @@ message PixKeyRegisterGrpcRequest {
 
 message PixKeyRegisterGrpcResponse {
   string clientId = 1;
-  string pixId = 5;
+  string pixId = 2;
+}
+
+service PixKeyDeleteService {
+  rpc delete(PixKeyDeleteGrpcRequest) returns (PixKeyDeleteGrpcResponse) {}
+}
+
+message PixKeyDeleteGrpcRequest {
+  string pixId = 1;
+  string clientId = 2;
+}
+
+message PixKeyDeleteGrpcResponse {
+  string clientId = 1;
+  string ispb = 2;
+  string deletedAt = 3;
+
 }

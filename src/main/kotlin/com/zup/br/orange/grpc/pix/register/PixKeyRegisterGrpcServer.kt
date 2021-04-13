@@ -1,19 +1,16 @@
-package com.zup.br.orange.grpc.pix
+package com.zup.br.orange.grpc.pix.register
 
 import com.zup.br.orange.*
-import com.zup.br.orange.entity.pix.enum.PixType
-import com.zup.br.orange.entity.pix.request.RegisterPixKeyRequest
 import com.zup.br.orange.exceptions.handler.ErrorHandler
-import com.zup.br.orange.grpc.pix.service.RegisterKeyGrpcService
-import com.zup.br.orange.grpc.pix.utils.toModel
+import com.zup.br.orange.grpc.pix.register.service.RegisterKeyGrpcService
+import com.zup.br.orange.grpc.pix.register.utils.toModel
 import io.grpc.stub.StreamObserver
 import org.slf4j.LoggerFactory
-import java.util.*
 import javax.inject.Singleton
 
 @ErrorHandler
 @Singleton
-    class PixKeyRegisterGrpcServer(val registerKeyGrpcService: RegisterKeyGrpcService) : PixKeyRegisterServiceGrpc.PixKeyRegisterServiceImplBase() {
+class PixKeyRegisterGrpcServer(val registerKeyGrpcService: RegisterKeyGrpcService) : PixKeyRegisterServiceGrpc.PixKeyRegisterServiceImplBase() {
 
     private val logger = LoggerFactory.getLogger(PixKeyRegisterGrpcServer::class.java)
 
