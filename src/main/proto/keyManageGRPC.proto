@@ -7,6 +7,7 @@ option objc_class_prefix = "HLW";
 
 package com.zup.br.orange;
 
+// ================= Register Pix ===================
 service PixKeyRegisterService {
   rpc register(PixKeyRegisterGrpcRequest) returns (PixKeyRegisterGrpcResponse) {}
 }
@@ -37,6 +38,7 @@ message PixKeyRegisterGrpcResponse {
   string pixId = 2;
 }
 
+// ================= Delete Pix ===================
 service PixKeyDeleteService {
   rpc delete(PixKeyDeleteGrpcRequest) returns (PixKeyDeleteGrpcResponse) {}
 }
@@ -50,5 +52,44 @@ message PixKeyDeleteGrpcResponse {
   string clientId = 1;
   string ispb = 2;
   string deletedAt = 3;
+}
 
+// ================= Consult Pix ===================
+service PixKeyConsultService {
+  rpc consult(PixKeyConsultGrpcRequest) returns (PixKeyConsultGrpcResponse) {}
+}
+
+message PixKeyConsultGrpcRequest {
+  message PixId{
+    string clientId = 1;
+    string pixId = 2;
+  }
+
+  oneof filter{
+      PixId pixId = 1;
+      string pixKey = 2;
+  }
+}
+
+message PixKeyConsultGrpcResponse {
+  message Pix {
+    message Account {
+      AccountType type = 1;
+      string institution = 2;
+      string ispb = 3;
+      string titular = 4;
+      string cpf = 5;
+      string agency = 6;
+      string accountNumber = 7;
+    }
+
+    string type = 1;
+    string key = 2;
+    Account account = 3;
+    string createdAt = 4;
+  }
+
+  string clientId = 1;
+  string pixId = 2;
+  Pix pix = 3;
 }

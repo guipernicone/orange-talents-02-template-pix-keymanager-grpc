@@ -2,6 +2,7 @@ package com.zup.br.orange.client.bcb
 
 import com.zup.br.orange.client.bcb.request.CreatePixClientRequest
 import com.zup.br.orange.client.bcb.request.DeletePixClientRequest
+import com.zup.br.orange.client.bcb.response.ConsultPixClientResponse
 import com.zup.br.orange.client.bcb.response.CreatePixClientResponse
 import com.zup.br.orange.client.bcb.response.DeletePixClientResponse
 import com.zup.br.orange.client.itau.ItauClient
@@ -24,11 +25,18 @@ interface BCBClient {
     @Produces(MediaType.APPLICATION_XML)
     fun deletePix(key: String, @Body deletePixClientRequest: DeletePixClientRequest): DeletePixClientResponse?
 
+    @Get("/{key}")
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_XML)
+    fun consultPix(key:String) : ConsultPixClientResponse?
+
     @Fallback
     class BCBClientFallBack: BCBClient {
         override fun createPix(@Body createPixClientRequest: CreatePixClientRequest): CreatePixClientResponse? = null
 
         override fun deletePix(key: String, @Body deletePixClientRequest: DeletePixClientRequest)
         : DeletePixClientResponse? = null
+
+        override fun consultPix(key: String): ConsultPixClientResponse? = null
     }
 }
