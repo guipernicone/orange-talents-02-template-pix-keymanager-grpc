@@ -1,5 +1,6 @@
 package com.zup.br.orange.grpc
 
+import com.zup.br.orange.PixKeyConsultServiceGrpc
 import com.zup.br.orange.PixKeyDeleteServiceGrpc
 import com.zup.br.orange.PixKeyRegisterServiceGrpc
 import io.grpc.ManagedChannel
@@ -23,5 +24,12 @@ class GrpcClients {
         @GrpcChannel(GrpcServerChannel.NAME) channel: ManagedChannel
     ): PixKeyDeleteServiceGrpc.PixKeyDeleteServiceBlockingStub {
         return PixKeyDeleteServiceGrpc.newBlockingStub(channel)
+    }
+
+    @Bean
+    fun PixKeyConsultGrpcRegister(
+        @GrpcChannel(GrpcServerChannel.NAME) channel: ManagedChannel
+    ): PixKeyConsultServiceGrpc.PixKeyConsultServiceBlockingStub {
+        return PixKeyConsultServiceGrpc.newBlockingStub(channel)
     }
 }

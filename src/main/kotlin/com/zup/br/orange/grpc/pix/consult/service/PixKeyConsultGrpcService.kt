@@ -35,30 +35,28 @@ class PixKeyConsultGrpcService(
                 "Pix with id: ${consultPixIdRequest.pixId} and clientId: ${consultPixIdRequest.clientId} not found"
             )
         }
-        val pix = optionalPix.get()
 
-        val accountResponse = itauClient.consultAccount(pix.clientId, pix.accountType.name)
-            ?: throw InternalErrorException("An unexpected error occurred")
-
-        return buildResponse(pix, accountResponse)
+        return consultInfo(optionalPix.get())
 
     }
     @Transactional
     fun consultPixValue(@Valid consultPixRequest: ConsultPixRequest) : PixKeyConsultGrpcResponse {
         val optionalPix = pixRepository.findByPixValue(consultPixRequest.pixValue)
         if (optionalPix.isPresent){
-            val pix = optionalPix.get()
-
-            val accountResponse = itauClient.consultAccount(pix.clientId, pix.accountType.name)
-                ?: throw InternalErrorException("An unexpected error occurred")
-
-            return buildResponse(pix, accountResponse)
+            return consultInfo(optionalPix.get())
         }
 
         val bcbResponse = bcbClient.consultPix(consultPixRequest.pixValue) ?:
             throw NotFoundException("Pix with value ${consultPixRequest.pixValue}, not found")
 
         return buildResponse(bcbResponse)
+    }
+
+    private fun consultInfo(pix: Pix): PixKeyConsultGrpcResponse {
+        val accountResponse = itauClient.consultAccount(pix.clientId, pix.accountType.name)
+            ?: throw InternalErrorException("An unexpected error occurred")
+
+        return buildResponse(pix, accountResponse)
     }
 
     private fun buildResponse(pix: Pix, accountResponse: ConsultAccountResponse): PixKeyConsultGrpcResponse{
