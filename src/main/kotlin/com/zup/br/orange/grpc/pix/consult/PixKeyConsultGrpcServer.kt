@@ -22,7 +22,7 @@ class PixKeyConsultGrpcServer(val pixKeyConsultGrpcService: PixKeyConsultGrpcSer
         request: PixKeyConsultGrpcRequest,
         responseObserver: StreamObserver<PixKeyConsultGrpcResponse>
     ) {
-        logger.info("Received request :\n$request");
+        logger.info("Received consult request :\n$request");
 
         val consultRequest = request.toModel()
         val response = if (consultRequest.isPixId) {
@@ -32,7 +32,7 @@ class PixKeyConsultGrpcServer(val pixKeyConsultGrpcService: PixKeyConsultGrpcSer
             pixKeyConsultGrpcService.consultPixValue(consultRequest as ConsultPixRequest)
         }
 
-        logger.info("Sending response :\n$response");
+        logger.info("Sending consult response :\n$response");
         responseObserver.onNext(response);
         responseObserver.onCompleted()
     }

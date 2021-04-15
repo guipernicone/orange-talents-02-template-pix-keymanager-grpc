@@ -13,5 +13,7 @@ interface PixRepository: CrudRepository<Pix,Long > {
 
     fun findByPixValue(pixValue: String?) : Optional<Pix>
 
+    fun findByClientId(clientId: String) : List<Pix>
+
     fun existsByPixValue(pixValue: String?) : Boolean
 }

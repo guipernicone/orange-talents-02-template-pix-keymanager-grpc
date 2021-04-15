@@ -43,12 +43,12 @@ class PixKeyDeleteGrpcServerTest(
         )
         pixRepository.save(pix)
 
-        var grpcRequest = PixKeyDeleteGrpcRequest.newBuilder()
+        val grpcRequest = PixKeyDeleteGrpcRequest.newBuilder()
             .setClientId(pix.clientId)
             .setPixId(pix.id.toString())
             .build()
 
-        var bcbCLientResponse = DeletePixClientResponse(pix.pixValue, pix.ispb, LocalDateTime.now())
+        val bcbCLientResponse = DeletePixClientResponse(pix.pixValue, pix.ispb, LocalDateTime.now())
 
         Mockito.`when`(bcbClient.deletePix(MockitoHelper.anyObject(), MockitoHelper.anyObject())).thenReturn(bcbCLientResponse)
 
@@ -69,7 +69,7 @@ class PixKeyDeleteGrpcServerTest(
             LocalDateTime.now()
         )
 
-        var grpcRequest = PixKeyDeleteGrpcRequest.newBuilder()
+        val grpcRequest = PixKeyDeleteGrpcRequest.newBuilder()
             .setClientId(pix.clientId)
             .setPixId("1")
             .build()
@@ -97,7 +97,7 @@ class PixKeyDeleteGrpcServerTest(
 
         pixRepository.save(pix)
 
-        var grpcRequest = PixKeyDeleteGrpcRequest.newBuilder()
+        val grpcRequest = PixKeyDeleteGrpcRequest.newBuilder()
             .setClientId(pix.clientId)
             .setPixId(pix.id.toString())
             .build()

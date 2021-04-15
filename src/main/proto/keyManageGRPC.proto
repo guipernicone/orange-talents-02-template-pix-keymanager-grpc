@@ -93,3 +93,25 @@ message PixKeyConsultGrpcResponse {
   string pixId = 2;
   Pix pix = 3;
 }
+
+// ================= List Pix ==================
+service PixKeyListService {
+  rpc list(PixKeyListGrpcRequest) returns (PixKeyListGrpcResponse) {}
+}
+
+message PixKeyListGrpcRequest {
+  string clientId = 1;
+}
+
+message PixKeyListGrpcResponse{
+  message Pix {
+    string pixId = 1;
+    KeyType pixType = 2;
+    string pixValue = 3;
+    AccountType accountType = 4;
+    string createdAt = 5;
+  }
+
+  string clientId = 1;
+  repeated Pix pixList = 2;
+}
